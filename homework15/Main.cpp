@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <cstdlib>
 #include <ctime>
 
@@ -7,40 +7,39 @@ int main() {
 	system("chcp 1251>nul");
 	int n, m;
 
+
+	// Ð—Ð°Ð´Ð°Ð½Ð¸Ðµ
 	const int rows = 10;
 	const int cols = 10;
 	int arr[rows][cols];
+	srand(time(NULL));
+	for (int i = 0; i < rows; i++)
+		for (int j = 0; j < cols; j++)
+			arr[i][j] = rand() % 100 + 1;
+
+
+	// Ð—Ð°Ð´Ð°Ñ‡Ð° 1
+	int sum_rows;
+	std::cout << "Ð˜Ñ‚Ð¾Ð³Ð¾Ð²Ñ‹Ð¹ Ð¼Ð°ÑÑÐ¸Ð²:\n";
 	for (int i = 0; i < rows; i++) {
-		for (int j = 0; j < cols; j++) {
-			arr[i][j] = rand() % 100;
-			std::cout << arr[i][j] << "\t";
-		}
-		std::cout << std::endl;
-	}
-	int sum_rows = 0;
-	std::cout << "Èòîãîâûé ìàññèâ:\n";
-	for (int i = 0; i < rows; i++) {
-		sum_rows = arr[i][0];
+		sum_rows = 0;
 		for (int j = 0; j < cols; j++) {
 			std::cout << arr[i][j] << '\t';
-			sum_rows = arr[i][j] > sum_rows ? arr[i][j] : sum_rows;
+			sum_rows += arr[i][j];
 		}
-		std::cout << "|sum: " << sum_rows << std::endl;
-
+		std::cout << "| sum: " << sum_rows << std::endl;
 	}
+	std::cout << std::endl;
 
-
-	std::cout << "Ââåäèòå ÷èñëî îò 0 äî 9 ->\n";
+	
+	// Ð—Ð°Ð´Ð°Ñ‡Ð° 2
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‡Ð¸ÑÐ»Ð¾ Ð¾Ñ‚ 0 Ð´Ð¾ 9 -> ";
 	std::cin >> n;
 	for (int i = 0; i < rows; i++) {
 		arr[i][n] = rand() % 100 + 1;
 		std::cout << arr[n] << " ";
-
 	}
 	std::cout << std::endl;
-
-
-
 
 
 	return 0;
